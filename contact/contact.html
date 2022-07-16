@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/contact/contact-style.css">
+</head>
+
+<body>
+    <div class="frm">
+        <form onsubmit="sendemail(); reset(); return false;">
+            <input type="text" name="name" id="name" required placeholder="Write your name " class="form-control"><br>
+
+            <textarea name="text" id="message" rows="4" placeholder="Write your query"></textarea>
+
+            <input type="email" name="email" id="email" required placeholder="Enter your email address" class="form-control"><br>
+
+            <button type="submit" class="form-control">SEND</button>
+
+        </form>
+    </div>
+
+
+    <script>
+        src = "https://smtpjs.com/v3/smtp.js"
+    </script>
+    <script>
+        function sendemail() {
+            Email.send({
+                Host: "smtp.gmail.com",
+                Username: "shreyachaudhary163@gmail.com",
+                Password: "",
+                To: 'aryansingh19461@gmail.com',
+                From: document.getElementById("email").value,
+                Subject: "Anime query",
+                Body: "Name:   " + document.getElementById("name").value +
+                    " <br> message:   " + document.getElementById("message").value +
+                    "<br> email:   " + document.getElementById("email").value
+            }).then(
+                message => alert("Message sent successfully")
+            );
+        }
+    </script>
+</body>
+
+</html>
